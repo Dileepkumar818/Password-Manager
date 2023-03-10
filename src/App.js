@@ -2,6 +2,48 @@ import {Component} from 'react'
 import {v4} from 'uuid'
 import './App.css'
 
+const ListItems = props => {
+  const {item, onDelete, isChecked} = props
+  const {id, web, user, pass} = item
+
+  const deleteItem = () => {
+    onDelete(id)
+  }
+
+  return (
+    <li className="list-item">
+      <div>
+        <p>{web[0]}</p>
+        <div>
+          <p>{web}</p>
+          <p>{user}</p>
+          {isChecked ? (
+            <p>{pass}</p>
+          ) : (
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png"
+              alt="stars"
+              className="image-star"
+            />
+          )}
+        </div>
+      </div>
+      <button
+        data-testid="delete"
+        onClick={deleteItem}
+        className="delete-button"
+        type="button"
+      >
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
+          alt="delete"
+          className="button-image"
+        />
+      </button>
+    </li>
+  )
+}
+
 class App extends Component {
   state = {
     passwordList: [],
@@ -66,75 +108,92 @@ class App extends Component {
     )
     const listCount = filteredList.length
     return (
-      <div className="bg-conatainer">
+      <div className="bg-container">
         <img
           src="https://assets.ccbp.in/frontend/react-js/password-manager-logo-img.png"
           alt="app logo"
+          className="logo-image"
         />
-        <div>
-          <div>
-            <h1>Add New Password</h1>
-            <form onSubmit={this.addList}>
-              <label htmlFor="website">
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png"
-                  alt="website"
+        <div className="input-manager">
+          <div className="input-container">
+            <h1 className="head">Add New Password</h1>
+            <form className="form-container" onSubmit={this.addList}>
+              <div className="input">
+                <label htmlFor="website" className="label">
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png"
+                    alt="website"
+                    className="image"
+                  />
+                </label>
+                <input
+                  id="website"
+                  type="text"
+                  placeholder="Enter Website"
+                  value={website}
+                  onChange={this.onWebsite}
+                  className="inputEl"
                 />
-              </label>
-              <input
-                id="website"
-                type="text"
-                placeholder="Enter Website"
-                value={website}
-                onChange={this.onWebsite}
-              />
-              <label htmlFor="username">
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png"
-                  alt="username"
+              </div>
+              <div className="input">
+                <label htmlFor="username" className="label">
+                  <img
+                    src="https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png"
+                    alt="username"
+                    className="image"
+                  />
+                </label>
+                <input
+                  id="username"
+                  type="text"
+                  placeholder="Enter Username"
+                  value={username}
+                  onChange={this.onUsername}
+                  className="inputEl"
                 />
-              </label>
-              <input
-                id="username"
-                type="text"
-                placeholder="Enter Username"
-                value={username}
-                onChange={this.onUsername}
-              />
-              <label htmlFor="password">
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
-                  alt="password"
+              </div>
+              <div className="input">
+                <label className="label" htmlFor="password">
+                  <img
+                    className="image"
+                    src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
+                    alt="password"
+                  />
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={this.onPassword}
+                  className="inputEl"
                 />
-              </label>
-              <input
-                id="password"
-                type="password"
-                placeholder="Enter Password"
-                value={password}
-                onChange={this.onPassword}
-              />
-              <button type="submit">Add</button>
+              </div>
+              <button className="addButton" type="submit">
+                Add
+              </button>
             </form>
           </div>
           <div>
             <img
               src="https://assets.ccbp.in/frontend/react-js/password-manager-lg-img.png"
               alt="password manager"
+              className="input-image"
             />
           </div>
         </div>
-        <div>
-          <div>
-            <div>
+        <div className="password-container">
+          <div className="password-search">
+            <div className="passCount">
               <h1>Your Passwords</h1>
-              <p>{listCount}</p>
+              <p className="count">{listCount}</p>
             </div>
             <div>
-              <label htmlFor="search">
+              <label className="label" htmlFor="search">
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
                   alt="search"
+                  className="image"
                 />
               </label>
               <input
@@ -150,43 +209,23 @@ class App extends Component {
           <label htmlFor="check">Show passwords</label>
           <div>
             {listCount === 0 ? (
-              <div>
+              <div className="no-pass">
                 <img
                   src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
                   alt="no passwords"
+                  className="input-image"
                 />
                 <p>No Passwords</p>
               </div>
             ) : (
-              <ul>
+              <ul className="list-container">
                 {filteredList.map(each => (
-                  <li key={each.id}>
-                    <div>
-                      <p>{each.web[0]}</p>
-                      <div>
-                        <p>{each.web}</p>
-                        <p>{each.user}</p>
-                        {isChecked ? (
-                          <p>{each.pass}</p>
-                        ) : (
-                          <img
-                            src="https://assets.ccbp.in/frontend/react-js/password-manager-stars-img.png"
-                            alt="stars"
-                          />
-                        )}
-                      </div>
-                    </div>
-                    <button
-                      data-testid="delete"
-                      onClick={this.onDelete}
-                      type="button"
-                    >
-                      <img
-                        src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
-                        alt="delete"
-                      />
-                    </button>
-                  </li>
+                  <ListItems
+                    key={each.id}
+                    item={each}
+                    isChecked={isChecked}
+                    onDelete={this.onDelete}
+                  />
                 ))}
               </ul>
             )}

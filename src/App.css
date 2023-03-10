@@ -10,3 +10,121 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.bg-container {
+  background-image: linear-gradient(to bottom, #9ba9eb, #c3caea);
+  padding: 20px;
+}
+
+.logo-image {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.input-manager {
+  background-color: #5763a5;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+.input-container {
+  background-color: #454f84;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+}
+.input-image {
+  width: 50%;
+}
+
+.addButton {
+  align-self: flex-start;
+  margin: 5px;
+}
+
+.label {
+  background-color: white;
+  padding-top: 5px;
+}
+
+.image {
+  width: 20px;
+}
+
+.input {
+  margin: 5px;
+  width: 100%;
+  height: 50%;
+}
+
+.password-container {
+  background-color: #5763a5;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.password-search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.passCount {
+  display: flex;
+  color: white;
+}
+
+.count {
+  font-size: 15px;
+  margin: 35px;
+  border-style: outset;
+  padding: 5px;
+  border-width: 1px;
+}
+
+.no-pass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.list-item {
+  background-color: transparent;
+  border-style: outset;
+  border-width: 1px;
+  list-style-type: none;
+  color: white;
+  display: flex;
+  padding: 10px;
+}
+
+.image-star {
+  width: 50%;
+}
+
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+}
+
+.button-image {
+  width: 30px;
+}
+
+.head {
+  color: white;
+}
