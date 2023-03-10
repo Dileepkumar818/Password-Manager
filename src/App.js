@@ -13,7 +13,7 @@ const ListItems = props => {
   return (
     <li className="list-item">
       <div>
-        <p>{web[0]}</p>
+        <p className="initial">{web[0]}</p>
         <div>
           <p>{web}</p>
           <p>{user}</p>
